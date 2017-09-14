@@ -28,3 +28,37 @@
 			eureka.server.enableSelfPreservation=false
 			#eureka server清理无效节点的时间间隔，默认60000毫秒，即60秒
 			eureka.server.evictionIntervalTimerInMs: 30000
+		
+		step4：访问localhost:port
+
+2、服务注册
+
+	step1：新建服务节点（简单的spring-boot工程）  server-node-a
+	
+	step2:  添加依赖:
+		   <dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-starter-eureka</artifactId>
+				<version>1.2.3.RELEASE</version>
+			</dependency>
+	step3：服务启动时，添加注解：@EnableDiscoveryClient或@EnableDiscoveryClient
+	
+	step4：配置：
+	
+			#注册到eureka
+			#eureka服务端口
+			eureka.server.port=8761
+			#eureka注册地址
+			eureka.client.serviceUrl.defaultZone=http://localhost:${eureka.server.port}/eureka/
+
+			#服务实例配置
+			#server-node-a服务端口
+			server.port=8081
+			#服务名称
+			spring.application.name=server-node-a
+			eureka.instance.prefer-ip-address=true
+			eureka.instance.instanceId=true
+	
+			
+			
+			
