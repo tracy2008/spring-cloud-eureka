@@ -58,7 +58,28 @@
 			spring.application.name=server-node-a
 			eureka.instance.prefer-ip-address=true
 			eureka.instance.instanceId=true
+
+3、服务调用
+
+	新建一个服务节点server-node-b,实现服务b调用服务a
 	
+	使用：feign 声明式web service客户端。
+		
+		step1：引入包
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-starter-feign</artifactId>
+				<version>1.3.4.RELEASE</version>
+			</dependency>
+			
+		step2：服务启动添加注解@EnableFeignClients
+	
+		step3：定义一个接口，在上面加注解@FeignClient(name= "server-node-a"),定义一个方法，和被调用的接口一样
+		
+		
+		
+		
+，	
 			
 			
 			
